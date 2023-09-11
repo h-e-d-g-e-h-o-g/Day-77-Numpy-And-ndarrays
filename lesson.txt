@@ -1,0 +1,118 @@
+Numpy stands for "Numerical Python".
+Numpy is a python library that is used in almost every field of science and engineering.
+It is a standard for working with numerical data in python.
+It is mainly used for doing serious maths and calculations.
+The crown jewel(integral part) of Numpy is ndarray. 
+ndarray is a homogeneous "n" dimensional array object.
+Now, you might see similarities of ndarray with the python list(1 dimentional) and DataFrame(2 dimensional or 3 dimensional).
+Homogeneous means all the data in the ndarray must be of the same datatype, for example all floating point numbers.
+n-dimensional means, we can work with everything from a single column(1 dimensional), two matrices(2 dimensional) to a bunch of matrices stacked on top of each other.
+1 dimensional example:- {2, 4, 5, 7}
+2 dimensional example:- {{4, 5, 7, 9}, {3, 8, 11, 7}, ...}
+3 dimensional example:- {{{4, 5, 7, 9}, {3, 8, 11, 7}}, {{2, 4, 5, 7}, {9, 8, 6, 5}}, ...}
+By using array() from Numpy, we can create an array. It will return me an array object.
+By using shape attribute of array object, we can find its shape(dimension or I would say rows and columns).
+We can access the elements of an array by using index just like in python list.
+By using ndim attribute of array object, we can find its dimensions.
+
+To create 2 dimensional array, we need to have pair of square brackets.
+Number of pairs of square brackets represents the number of rows.
+Number of elements in a square bracket represents the number of columns.
+To access an element in a 2 dimensional, we need to use row and column of that element.
+To access an entire row in a 2 dimensional, we need to use ":".
+Like, I want to access 2nd row of 2 dimensional array, we need use:- my_array[1,:].
+Numpy refers to the dimensions as axes. First dimension means first axis and Second dimension means second axis.
+
+An array of 3 dimensions or higher is often referred as "tensor".
+Tensor simply means n-dimensional array.
+
+Using arange() method to create an array of values(mainly in sequence).
+We can use flip() method to reverse an array.
+To print or get to know about the indices of all the nonzero elements, we can use nonzero() method. It will return a tuple of all the indices
+of all the non-zeroes values of arrays.
+nz_indices = np.nonzero(b)
+
+We can use Numpy's random module's random method to create an array of random number.
+Syntax:- z = random((3,3,3))
+	Or
+Syntax:- z = np.random.random((3,3,3))
+But, you need to provide size of the array.
+
+linspace() method
+We can use linspace() method to create an array of values that are evenly spaced amongst each other over an interval that we've set within paranthesis.
+
+imshow() method
+imshow() method of matplotlib library is used to display an array as an image.
+It helps us to visualize the 2D array.
+
+NOTE:- A vector is a one dimensional array, which is a fundamental data structure to store and manipulate data in numerical and scientific computing.
+
+To add two vectors such as:- 
+v1 = np.array([4, 5, 2, 7])
+v2 = np.array([2, 1, 3, 3])
+result = v1 + v2
+result = array([ 6, 6, 5, 10])
+To add Lists, we get:-
+list1 = [4, 5, 2, 7]
+list2 = [2, 1, 3, 3]
+list1 + list2
+# output: [4, 5, 2, 7, 2, 1, 3, 3]
+
+To muliply two vectors, we get:-
+v1 * v2 = array([ 8, 5, 6, 21])
+list1 * list2 :- Error
+
+Broadcasting
+Now, often times, you want to do some sort of operation between an array and a single number.
+The array is "vector" and the single number is "scalar".
+For example, if you want to multiply an array by 2.
+Then Numpy will make the shape of the scalar to the size of the array.
+This is called Broadcasting.
+These rules hold for 2 or more dimensions.
+Broadcasting is a mechanism that allows operations to be performed on arrays of different shape.
+In broadcasting, smaller arrays are "broadcasted" or stretched to match the shape of larger arrays so that operations can be performed element by element. 
+
+NOTE:- We use "matmul()" method to multiply arrays to each other or '@' symbol.
+
+Images are a collection of pixel values.
+Each pixel has color and color can be represented in the combination of red, green and blue.
+img = misc.face()
+A built-in test image will be loaded from the "misc" module of scipy library.
+This test image is often used for various image processing and computer vision tasks for testing and experimenting with algorithms.
+Scipy library is a scientific computing library in python that provides us tools for scientific and technical computing.
+face() method will load a test image from the misc module as a Numpy array.
+
+We can find the resolution of an image by looking throughout the image's numpy array's shape.
+If an ndarray of image is (768, 1024, 3)
+Its format is (rows, column, depth).
+Rows represent the height of the image and Columns represent the width of the image.
+Resolution is 768x1024
+
+Now, we need to convert our image into black and white one.
+We need to divide the image's array by 255.
+sRGB stands for standard Red Green Blue.
+It is a standardised color space that is used in digital imaging, monitors and the internet.
+It was created to ensure consistency in how colors are displayed across different devices.
+In sRGB, the values of RGB is between 0 and 1 rather than 0 and 255.
+
+grey_vals = np.array([0.2126, 0.7152, 0.0722])
+This numpy array is used to convert the color image to grayscale.
+These each values representing Red, Green and Blue contribution to luminate the pixel.
+When you combine them, the result will give us a grayscale.
+
+plt.imshow(img_gray, cmap='gray')
+In this line, cmap parameter is used to display a grayscale(black and white) image.
+cmap parameter tells the matplotlib to use "grayscale" colormap to render the image.
+
+With the help of flip() method of numpy, you can flip the image.
+By flipping, you will reverse the order of rows and columns in the Numpy array.
+NOTE:- To rotate an image by 90 degree. We can use Numpy's rot90 method.
+Syntax:- numpy.rot90(img)
+
+Solarizing(Inverting) the image
+Solarizing is an image processing technique, that reverses the tone of image.
+For example:- some of the dark areas of image becomes lighter and some light areas becomes darker.
+In this process, a threshold is set, if the image's pixel value is below the threshold, it will remain same.
+If the image's pixel value is above the threshold, then pixel value will be reversed.
+We can do inverting the image through:-
+Syntax:- solar_img = 255 - img
